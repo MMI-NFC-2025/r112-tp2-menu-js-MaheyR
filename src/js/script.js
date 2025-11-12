@@ -22,5 +22,5 @@ toggle.addEventListener("click", () => {
     nav.ariaHidden = "true";
     toggle.ariaExpanded = "false";
     main.removeAttribute("hidden");
-  }
+  }document.body.classList.toggle("noscroll", isClosed);
 });
