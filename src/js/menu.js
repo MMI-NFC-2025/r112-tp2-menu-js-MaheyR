@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Chats</title>
-
-    <!-- CSS principal -->
-    <link rel="stylesheet" href="./src/css/styles.css" />
-
-    <!-- JS du menu -->
-    <script type="module" src="./src/js/script.js" defer></script>
-</head>
-
-<body>
-    <!-- En-tête de la page -->
-    <header class="header container">
+document.addEventListener('DOMContentLoaded', () => {
+    const menuHTML = `
         <div class="headerend">
             <button class="headermenu-btn menu-btn" aria-label="menu" aria-expanded="false" aria-controls="mainNav">
                 🍔
             </button>
-
-            <!-- Menu principal -->
             <nav class="header__menu menu" id="mainNav" aria-hidden="true">
                 <ul class="menu__list list-unstyled">
                     <li class="menu__item">
@@ -37,4 +19,22 @@
                         <a class="menu__link" href="./dogs/chien-2.html">Chien 2</a>
                     </li>
                 </ul>
-</html>
+            </nav>
+        </div>
+    `;
+
+    const header = document.querySelector('.header.container');
+    header.insertAdjacentHTML('beforeend', menuHTML);
+
+    const menuButton = document.querySelector('.headermenu-btn');
+    const menu = document.getElementById('mainNav');
+
+    menuButton.addEventListener('click', () => {
+        const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', !isExpanded);
+        menu.setAttribute('aria-hidden', isExpanded);
+        menu.style.display = isExpanded ? 'none' : 'block'; // Toggle menu visibility
+    });
+});
+
+<script type="module" src="./src/js/menu.js" defer></script>
